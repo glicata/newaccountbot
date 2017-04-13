@@ -32,13 +32,6 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     /*
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
-.matches('None', [
-    /*
-    function(session, args, next) {
-        session.send("sending a message for the none intent");
-    }
-    */
-    ]);
 
 .onDefault((session) => {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
