@@ -20,8 +20,8 @@ var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure
 var bot = new builder.UniversalBot(connector);
 
 // Make sure you add code to validate these fields
-var luisAppId = process.env.LuisAppId;
-var luisAPIKey = process.env.LuisAPIKey;
+var luisAppId = '9d945191c4e446a5be0ad1921d588952';
+var luisAPIKey = '50b17e35fe2f41d9a20e95c22c7b979d';
 var luisAPIHostName = process.env.LuisAPIHostName || 'westus.api.cognitive.microsoft.com';
 
 const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v1/application?id=' + luisAppId + '&subscription-key=' + luisAPIKey;
@@ -36,6 +36,24 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 
     .matches('new account', (session, args) => {
         session.send('intent is new account');
+
+        function (session, args, next) {
+            console.log(args);
+            //session.dialogData.args = args;
+            var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
+            var accountLevel = builder.EntityRecognizer.findEntity(args.entities, 'accountLevel');
+            var typeOfPersonalAccount = builder.EntityRecognizer.findEntity(args.entities, 'accountType::typeOfPersonalAccount');
+            var typeOfBusinessAccount = builder.EntityRecognizer.findEntity(args.entities, 'accountType::typeOfBusiness');
+            console.log('ENTITIES', accountType, accountLevel, typeOfPersonalAccount, typeOfBusinessAccount);
+            var account = {
+                accountType: accountType ? accountType.entity : null,
+                accountLevel: accountLevel ? accountLevel.entity : null,
+                typeOfPersonalAccount: typeOfPersonalAccount ? typeOfPersonalAccount.entity : null,
+                typeOfBusinessAccount: typeOfBusinessAccount ? typeOfBusinessAccount.entity : null
+            }
+            session.dialogData.account = account;
+
+
 
     })
 
