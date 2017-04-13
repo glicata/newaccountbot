@@ -37,25 +37,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     .matches('new account', (session, args) => {
         session.send('intent is new account');
 
-        function (session, args, next) {
-            console.log(args);
-            //session.dialogData.args = args;
-            var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
-            var accountLevel = builder.EntityRecognizer.findEntity(args.entities, 'accountLevel');
-            var typeOfPersonalAccount = builder.EntityRecognizer.findEntity(args.entities, 'accountType::typeOfPersonalAccount');
-            var typeOfBusinessAccount = builder.EntityRecognizer.findEntity(args.entities, 'accountType::typeOfBusiness');
-            console.log('ENTITIES', accountType, accountLevel, typeOfPersonalAccount, typeOfBusinessAccount);
-            var account = {
-                accountType: accountType ? accountType.entity : null,
-                accountLevel: accountLevel ? accountLevel.entity : null,
-                typeOfPersonalAccount: typeOfPersonalAccount ? typeOfPersonalAccount.entity : null,
-                typeOfBusinessAccount: typeOfBusinessAccount ? typeOfBusinessAccount.entity : null
-            }
-            session.dialogData.account = account;
-
-
-
-    })
+        })
 
 .onDefault((session) => {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
