@@ -34,19 +34,35 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
 
-    .matches('new account', (session, args) => {
+    .matches('new account', (session, args) =>
+    {
 
-        session.send('intent is new account');
-
-        function (session, args, next) {
+        function(session, args, next) {
             var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
+
+            var account
+            {
+                accountType: accountType ? accountType.entity : null;
+            }
+
+            if (!account.accountType)
+            {
+               // builder.Prompts.choice(session, "What type of account do you want to set up?", accountTypes);
+                builder.Prompts.text(session, 'What type of account do you want to set up? Business or Personal');
+            }
+            else
+            {
+                next();
+            }
         }
+        
 
-        })
+    })
 
-.onDefault((session) => {
+    .onDefault((session) =>
+    {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
-});
+    });
 
 bot.dialog('/', intents);    
 
