@@ -34,8 +34,8 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
 
-    .matches('new account', (session, args) =>
-    {
+    .matches('new account', (session, args) => {
+       
         /*
         function(session, args, next) {
             var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
@@ -55,7 +55,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
                 next();
             }
         }
-       */ 
+       */
 
     })
 
