@@ -32,7 +32,13 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     /*
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
+    .matches('none' , [
 
+        function (session, args, next) {
+            session.send('please work');
+        }
+      
+    ]);
 .onDefault((session) => {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
 });
