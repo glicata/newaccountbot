@@ -36,7 +36,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 
     .matches('new account', (session, args) =>
     {
-
+        /*
         function(session, args, next) {
             var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
 
@@ -55,7 +55,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
                 next();
             }
         }
-        
+       */ 
 
     })
 
