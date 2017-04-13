@@ -35,21 +35,23 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     */
 
     .matches('new account', (session, args) => {
-       
+
+        var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
+
+        var account
+        {
+            accountType: accountType ? accountType.entity : null;
+        }
+
+        if (!account.accountType) {
+            // builder.Prompts.choice(session, "What type of account do you want to set up?", accountTypes);
+            builder.Prompts.text(session, 'What type of account do you want to set up? Business or Personal');
+        }
+
+
         /*
         function(session, args, next) {
-            var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
-
-            var account
-            {
-                accountType: accountType ? accountType.entity : null;
-            }
-
-            if (!account.accountType)
-            {
-               // builder.Prompts.choice(session, "What type of account do you want to set up?", accountTypes);
-                builder.Prompts.text(session, 'What type of account do you want to set up? Business or Personal');
-            }
+            
             else
             {
                 next();
