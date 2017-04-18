@@ -35,41 +35,14 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
 
-    .matches('new account', function (session) {
-
-      /*
-            console.log(args);
-            //session.dialogData.args = args;
-            var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
-            var accountLevel = builder.EntityRecognizer.findEntity(args.entities, 'accountLevel');
-            var typeOfPersonalAccount = builder.EntityRecognizer.findEntity(args.entities,'accountType::typeOfPersonalAccount');
-            var typeOfBusinessAccount = builder.EntityRecognizer.findEntity(args.entities, 'accountType::typeOfBusiness');
-            console.log('ENTITIES', accountType, accountLevel, typeOfPersonalAccount, typeOfBusinessAccount);
-            var account = {
-                accountType: accountType ? accountType.entity : null,
-                accountLevel: accountLevel ? accountLevel.entity : null,
-                typeOfPersonalAccount: typeOfPersonalAccount ? typeOfPersonalAccount.entity : null,
-                typeOfBusinessAccount: typeOfBusinessAccount ? typeOfBusinessAccount.entity : null
-            }
-            session.dialogData.account = account;
-*/
-            // Prompt for account type
-            //var accountTypes = ["Business", "Personal"];
-         //   if (!account.accountType) {
-                //builder.Prompts.choice(session, "What type of account do you want to set up?", accountTypes);
-                //builder.Prompts.text(session, 'What type of account do you want to set up? Business or Personal');
-                session.beginDialog('/step2')
-           // }
-       
-       
-
-    });
+intents.matches('new account' [
     
-    bot.dialog('/step2' , function (session, args, next) {
-        session.send('this is step 2')
-        session.endConversation();
-    });
-
+    
+    
+    
+    
+]);
+  
     .onDefault((session) =>
     {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
