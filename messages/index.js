@@ -34,7 +34,7 @@ bot.dialog('/', intents);
     /*
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
-.matches('new account', (session) => {
+.matches('new account', (session, args) => {
    
 
 session.send('new account');
