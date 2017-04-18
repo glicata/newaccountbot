@@ -39,7 +39,7 @@ bot.dialog('/', intents);
 
 session.send('new account');
  
-});
+})
 
   
     .onDefault((session) =>
