@@ -53,16 +53,22 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
             session.dialogData.account = account;
 
             // Prompt for account type
-            var accountTypes = ["Business", "Personal"];
+            //var accountTypes = ["Business", "Personal"];
             if (!account.accountType) {
-                builder.Prompts.choice(session, "What type of account do you want to set up?", accountTypes);
+                //builder.Prompts.choice(session, "What type of account do you want to set up?", accountTypes);
                 //builder.Prompts.text(session, 'What type of account do you want to set up? Business or Personal');
+                session.beginDialog('/step2')
             } else {
                 next();
             }
         
        
 
+    })
+    
+    bot.dialog('/step2', function (session, args, next) {
+        session.send('This is step 2');
+        session.endConversation();
     })
 
     .onDefault((session) =>
