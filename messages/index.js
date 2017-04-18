@@ -66,10 +66,10 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 
     })
     
-    bot.dialog('/step2', function (session, args, next) {
+    bot.dialog('/step2', function(session, args, next) {
         session.send('This is step 2');
         session.endConversation();
-    })
+    });
 
     .onDefault((session) =>
     {
