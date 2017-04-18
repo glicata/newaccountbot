@@ -34,124 +34,15 @@ bot.dialog('/', intents);
     /*
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
-intents.matches('new account', [
-        function (session, args, next) {
-                console.log(args);
-                //session.dialogData.args = args;
-                var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
-                var accountLevel = builder.EntityRecognizer.findEntity(args.entities, 'accountLevel');
-                var typeOfPersonalAccount = builder.EntityRecognizer.findEntity(args.entities, 'accountType::typeOfPersonalAccount');
-                var typeOfBusinessAccount = builder.EntityRecognizer.findEntity(args.entities, 'accountType::typeOfBusiness');
-                console.log('ENTITIES', accountType, accountLevel, typeOfPersonalAccount, typeOfBusinessAccount);
-                var account = {
-                    accountType: accountType ? accountType.entity : null,
-                    accountLevel: accountLevel ? accountLevel.entity : null,
-                    typeOfPersonalAccount : typeOfPersonalAccount  ? typeOfPersonalAccount.entity  : null,
-                    typeOfBusinessAccount: typeOfBusinessAccount? typeOfBusinessAccount.entity : null
-                }
-                session.dialogData.account = account;
+.matches('new account', [
 
-                // Prompt for account type
-                var accountTypes = ["Business","Personal"];
-                if (!account.accountType) {
-                    builder.Prompts.choice(session, "What type of account do you want to set up?", accountTypes);
-                    //builder.Prompts.text(session, 'What type of account do you want to set up? Business or Personal');
-                } else {
-                    next();
-                }
-        },
-        function (session, results, next) {
-                console.log('second block');
-        	  var account = session.dialogData.account;
-		    if (results.response) {
-			      console.log('RESPONSE', results);
-			      account.accountType = results.response.entity;
-                }
-                session.dialogData.account = account;
-
-                // Prompt for account level
-                if (!account.accountLevel) {
-                        builder.Prompts.choice(session, "What account level do you want to set up?", ["Basic","Premium"]);
-                        //builder.Prompts.text(session, 'What level account would you like? Basic or Premium');
-                } else {
-                    next();
-                }
-        },
-        function (session, results, next) {
-                console.log('third block');
-        	  var account = session.dialogData.account;
-		    if (results.response) {
-			      console.log('RESPONSE', results);
-			      account.accountLevel = results.response.entity;
-                }
-                session.dialogData.account = account;
-
-                // Prompt for type of business or perosnalaccount level
-                if ((account.accountType.toLowerCase() == 'business') && (!account.typeOfBusinessAccount)) {
-                        builder.Prompts.choice(session, "What type of business do you have?", ["LLC","Sole Proprietorship"]);
-                } else if ((account.accountType.toLowerCase() == 'personal') && (!account.typeOfPersonalAccount)) {
-                        builder.Prompts.choice(session, "What type of personal account do you need?", ["Individual","Joint"]);
-                } else {
-                    next();
-                }
-        },
-/*
-                console.log('accountType',accountType);
-                if (!accountType) {
-//            builder.Prompts.text(session, "What type of account do you want to set up? Business or Personal");
-                        builder.Prompts.choice(session, "What type of account do you want to set up?", accountTypes);
-                } else {
-//          session.dialogData.accountType.entity = accountType;
-                        session.dialogData.accountType = accountType;
-                        next();
-//            next({ response: accountType.entity });
-                }
-        },
-        function (session, results, next) {
-                //if (results.response) {
-                //  session.dialogData.accountType = results.response;
-                //}
-                var accountLevel = builder.EntityRecognizer.findEntity(session.dialogData.args.entities, 'accountLevel');
-                console.log('accountType',accountLevel);
-                if (!accountLevel) {
-//            builder.Prompts.text(session, "What account level do you want to set up? Basic or Premium");
-                        builder.Prompts.choice(session, "What account level do you want to set up?", ["Basic","Premium"]);
-                } else {
-                        //session.dialogData.accountLevel.entity = accountLevel;
-                        session.dialogData.accountLevel.entity = accountLevel;
-                        next();
-                        //next({ response: accountLevel.entity });
-                }
-        },
-        */
-        function (session, results) {
-                console.log('reply');
-                var account = session.dialogData.account;
-                if (results.response) {
-                        console.log('RESPONSE', results);
-                        if (account.accountType.toLowerCase() == 'business') {
-                                account.typeOfBusinessAccount = results.response.entity;
-                        } else if (account.accountType.toLowerCase() == 'personal') {
-                                account.typeOfPersonalAccount = results.response.entity;
-                        }
-
-                    //session.dialogData.accountLevel = results.response;
-                    // ... save task
-                    //session.send("Intent: new account, accountType: '%s', accountLevel: '%s'", accountType, accountLevel);
-//            session.send("Intent: 'new account'");
-                    //session.send("Intent: 'new account'\n\nAccountType: '%s'\n\nAccountLevel: '%s'",session.dialogData.accountType.entity ,session.dialogData.accountLevel.entity);
-//            session.send("AccountType: '%s'", session.dialogData.accountType);
-//            session.send("AccountLevel: '%s'", results.response);
-//            session.send("AccountType: '%s'", results.response);
-//            session.send("AccountLevel: '%s'", results.response);
-                }
-                //else {
-                //    session.send("Ok Intent: 'new account'\n\nAccountType: '%s'\n\nAccountLevel: '%s'",session.dialogData.accountType.entity ,session.dialogData.accountLevel.entity);
-                //}
-                session.send("Intent: 'new account'\n\nAccountType: '%s'\n\nAccountLevel: '%s'\n\nTypeOfBusinessAccount: '%s'\n\nTypeOfPersonalAccount: '%s'",account.accountType, account.accountLevel, account.typeOfBusinessAccount, account.typeOfPersonalAccount);
-        }
-
+function (session, args, next) {
+   
+    session.send('This is new account intent');
+}
+    
 ]);
+
   
     .onDefault((session) =>
     {
