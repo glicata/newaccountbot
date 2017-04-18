@@ -34,10 +34,12 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     /*
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
-.matches('new account', (session) => {
-   
- 
-})
+.matches('new account', [
+    
+    
+    
+    
+]);
 
   
     .onDefault((session) =>
