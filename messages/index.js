@@ -34,10 +34,8 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     /*
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
-.matches('new account', (session, args) => {
+.matches('new account', (session) => {
    
-
-session.send('new account');
  
 })
 
@@ -46,6 +44,7 @@ session.send('new account');
     {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
     });
+    
 bot.dialog('/', intents);
     
 
