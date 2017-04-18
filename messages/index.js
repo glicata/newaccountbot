@@ -39,7 +39,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     session.send('intent is new account');
     
     
-});
+})
 
   
     .onDefault((session) =>
