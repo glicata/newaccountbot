@@ -35,9 +35,9 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
 
-    .matches('new account', (session) => {
+    .matches('new account', function (session) {
 
-      
+      /*
             console.log(args);
             //session.dialogData.args = args;
             var accountType = builder.EntityRecognizer.findEntity(args.entities, 'accountType');
@@ -52,14 +52,14 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
                 typeOfBusinessAccount: typeOfBusinessAccount ? typeOfBusinessAccount.entity : null
             }
             session.dialogData.account = account;
-
+*/
             // Prompt for account type
             //var accountTypes = ["Business", "Personal"];
-            if (!account.accountType) {
+         //   if (!account.accountType) {
                 //builder.Prompts.choice(session, "What type of account do you want to set up?", accountTypes);
                 //builder.Prompts.text(session, 'What type of account do you want to set up? Business or Personal');
                 session.beginDialog('/step2')
-            }
+           // }
        
        
 
