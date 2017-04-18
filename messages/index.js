@@ -29,12 +29,17 @@ const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v1/application?id=' +
 
 // Main dialog with LUIS
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
-var intents = new builder.IntentDialog({ recognizers: [recognizer] })
+var intents = new builder.IntentDialog({ recognizers: [recognizer] });
 bot.dialog('/', intents);
     /*
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
-dialog.matches('new account', [
+intents.matches('new account', [
+
+function (session, args, next) {
+   
+    session.send('This is new account intent');
+}
     
 ]);
 
