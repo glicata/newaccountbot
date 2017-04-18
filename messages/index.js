@@ -30,7 +30,7 @@ const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v1/application?id=' +
 // Main dialog with LUIS
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
 var intents = new builder.IntentDialog({ recognizers: [recognizer] })
-bot.dialog('/', intents);
+
     /*
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
@@ -46,7 +46,7 @@ session.send('new account');
     {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
     });
-
+bot.dialog('/', intents);
     
 
 if (useEmulator) {
