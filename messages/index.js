@@ -47,23 +47,8 @@ intents.matches('new account', [
 ]);
 
 
-
-    /*
-.matches('new account', (session) => {
-    
-    session.send('intent is new account');
-   // session.beginDialog('/step2');    
-
-
-})*/
-/*
-bot.dialog('/step2', function(session,args,next){
-   session.send('step 2');
-session.endConversation();  
-});
-*/
   
-    intents.onDefault((session) =>
+intents.onDefault((session) =>
     {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
     });
