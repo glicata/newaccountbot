@@ -37,7 +37,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 .matches('new account', (session) => {
     
     session.send('intent is new account');
-    session.beginDialog('/step2');    
+   // session.beginDialog('/step2');    
 })
 /*
 bot.dialog('/step2', function(session,args,next){
