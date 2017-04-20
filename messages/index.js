@@ -56,29 +56,6 @@ bot.dialog('/', function (session) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 // Make sure you add code to validate these fields
 var luisAppId = '9d945191c4e446a5be0ad1921d588952';
