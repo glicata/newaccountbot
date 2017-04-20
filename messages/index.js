@@ -94,14 +94,14 @@ intents.matches('new account', [
 bot.dialog('/', function (session) {
     session.send("Hello World");
 });
-
+ */ 
 .onDefault((session) =>
     {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
     });
   
 
-     */ 
+    
 
 if (useEmulator) {
     var restify = require('restify');
