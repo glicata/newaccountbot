@@ -34,11 +34,28 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     /*
     .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
     */
+
+intents.matches('new account', [
+
+    function (session, args, next) {
+        console.log(args);
+        session.send('this is the new account intent');
+
+    }
+
+
+]);
+
+
+
+    /*
 .matches('new account', (session) => {
     
     session.send('intent is new account');
    // session.beginDialog('/step2');    
-})
+
+
+})*/
 /*
 bot.dialog('/step2', function(session,args,next){
    session.send('step 2');
@@ -46,7 +63,7 @@ session.endConversation();
 });
 */
   
-    .onDefault((session) =>
+    intents.onDefault((session) =>
     {
     session.send('Sorry,  did not understand \'%s\'.', session.message.text);
     });
