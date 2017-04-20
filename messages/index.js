@@ -4,7 +4,7 @@ natural language support to a bot.
 For a complete walkthrough of creating this type of bot see the article at
 http://docs.botframework.com/builder/node/guides/understanding-natural-language/
 -----------------------------------------------------------------------------*/
-
+/*
 
 // Add your requirements
 var restify = require('restify');
@@ -27,8 +27,8 @@ bot.dialog('/', function (session) {
     session.send("Hello World");
 });
 
+*/
 
-/*
 "use strict";
 var builder = require("botbuilder");
 var botbuilder_azure = require("botbuilder-azure");
@@ -39,7 +39,7 @@ var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure
     /*
     appId: process.env['MicrosoftAppId'],
     appPassword: process.env['MicrosoftAppPassword'],
-    
+    */
     appId: 'bd0e7669-139f-4507-b209-69e59393f0d6',
     appPassword: 'H3qhOgxaOFjdfD8jpfF2uXQ',
     stateEndpoint: process.env['BotStateEndpoint'],
