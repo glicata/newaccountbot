@@ -97,7 +97,7 @@ bot.dialog('/', function (session) {
  */ 
 .onDefault((session) =>
     {
-    session.send('Sorry,  did not understand \'%s\'.', session.message.text);
+    session.send('Sorry,  no comprendo understand \'%s\'.', session.message.text);
     });
   
 
